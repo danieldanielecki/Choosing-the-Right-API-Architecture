@@ -5,11 +5,21 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>GraphQL vs REST</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
 	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<style>
+		.fragment.blur {
+			filter: blur(1rem);
+		}
+
+		.fragment.blur.visible {
+			filter: none;
+		}
+	</style>
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -338,15 +348,15 @@ client.query({
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Error Handling</h2>
 				<table>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<th>REST</th>
 						<th>GraphQL</th>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>Status codes to indicate nature of errors</td>
 						<td>Error classes</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>Error messages within response body</td>
 						<td>Error messages within resolvers</td>
 					</tr>
@@ -369,7 +379,7 @@ try {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Error Handling: GraphQL</h2>
-				<pre><code>
+				<code class="language-javascript" data-trim data-line-numbers="|6|9"><pre>
 try {
 	const resource = await Resource.findByPk(id);
 	if (resource) {
@@ -400,7 +410,7 @@ try {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Global Object Identification: GraphQL</h2>
-				<pre><code>
+				<code class="language-graphql" data-trim data-line-numbers="|2|3-5"><pre>
 query {
 	user(id: "1") {
 		id
@@ -408,11 +418,11 @@ query {
 		email
 	}
 }
-				</pre></code>
+				</code></pre>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Global Object Identification: REST</h2>
-				<pre><code>
+				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
 GET /resources/:id
 				</code></pre>
 			</section>
@@ -425,7 +435,7 @@ GET /resources/:id
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Pagination: GraphQL</h2>
-				<pre><code>
+				<code class="language-graphql" data-trim data-line-numbers="|1,11|2,10|3-5|6-9"><pre>
 query {
 	items(limit: 10, offset: 20) {
 		total
@@ -437,11 +447,11 @@ query {
 		}
 	}
 }
-				</pre></code>
+				</code></pre>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Pagination: REST</h2>
-				<pre><code>
+				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
 GET /api/items?limit=10&offset=20
 				</code></pre>
 			</section>
@@ -454,18 +464,18 @@ GET /api/items?limit=10&offset=20
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Sorting: GraphQL</h2>
-				<pre><code>
+				<code class="language-graphql" data-trim data-line-numbers="|1,6|2,5|3-4"><pre>
 query {
 	items(sort: { field: "name", order: DESC }) {
 		id
 		name
 	}
 }
-			</pre></code>
+				</code></pre>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Sorting: REST</h2>
-				<pre><code>
+				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
 GET /api/items?sortBy=name&order=desc
 				</code></pre>
 			</section>
@@ -487,7 +497,7 @@ GET /api/items?sortBy=name&order=desc
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Won't work</h2>
-				<pre><code>
+				<code class="language-graphql" data-trim data-line-numbers="|1,3|2"><pre>
 query {
 	*
 }
@@ -495,7 +505,7 @@ query {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Won't work</h2>
-				<pre><code>
+				<code class="language-graphql" data-trim data-line-numbers="|1,5|2,4|3"><pre>
 query {
 	users {
 		*
@@ -559,7 +569,7 @@ query {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Unit Testing: REST</h2>
-				<pre><code>
+				<code class="language-javascript" data-trim data-line-numbers="|1|2-3|5|7-9|11-15|17"><pre>
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -577,11 +587,12 @@ app.post('/api/resources', (req, res) => {
 });
 
 module.exports = app;
-				</pre></code>
+				</code></pre>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Unit Testing: GraphQL</h2>
-				<pre><code>
+				<code class="language-javascript" data-trim
+					data-line-numbers="|1|3,16|4-6|9-11|13-15|18|20,31|21-23|24-30|33|35"><pre>
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
@@ -617,11 +628,11 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers });
 
 module.exports = server;
-				</pre></code>
+				</code></pre>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Unit Testing: REST</h2>
-				<pre><code>
+				<pre><code class="language-javascript" data-trim data-line-numbers="|1|2|3|5,19|6,11|7|8|9|10|13,18|14|15|16|17">
 const request = require('supertest');
 const app = require('../app');
 const { expect } = require('chai');
@@ -645,7 +656,7 @@ describe('REST API', () => {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Unit Testing: GraphQL</h2>
-				<pre><code>
+				<pre><code class="language-javascript" data-trim data-line-numbers="|1|2|3|5|7,35|8,20|9-16|17|18|19|22,34|23-30|31|32|33">
 const { createTestClient } = require('apollo-server-testing');
 const { expect } = require('chai');
 const server = require('../schema');
@@ -701,49 +712,49 @@ describe('GraphQL API', () => {
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>GraphQL vs REST</h2>
 				<table>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<th>Feature</th>
 						<th>REST</th>
 						<th>GraphQL</th>
 						<th>Similar/Different</th>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>HTTP</td>
 						<td>Yes</td>
 						<td>Yes</td>
 						<td>Similar</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>API endp.</td>
 						<td>Yes</td>
 						<td>Yes</td>
 						<td>Similar</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>JSON</td>
 						<td>Yes</td>
 						<td>Yes</td>
 						<td>Similar</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>Request</td>
 						<td>Rigid</td>
 						<td>Flexible</td>
 						<td>Different</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>Call API</td>
 						<td>Endpoint</td>
 						<td>Query</td>
 						<td>Different</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>Response</td>
 						<td>Server</td>
 						<td>Client</td>
 						<td>Different</td>
 					</tr>
-					<tr>
+					<tr class="fragment custom blur highlight-current-white fade-up">
 						<td>Size resp.</td>
 						<td>Server</td>
 						<td>Client</td>
@@ -757,22 +768,23 @@ describe('GraphQL API', () => {
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Useful, but</h2>
 				<ul>
-					<li>Caching</li>
-					<li>Circular Queries (FE)</li>
-					<li>Error Handling</li>
-					<li>Introspection</li>
-					<li>query *</li>
-					<li>Up-to-date projects</li>
-					<li>Unit Testing</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Caching</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Circular Queries (FE)</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Error Handling</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Introspection</li>
+					<li class="fragment custom blur highlight-current-white fade-up">query *</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Up-to-date projects</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Unit Testing</li>
 				</ul>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Alternatives</h2>
+				<h2>Read more</h2>
 				<ul>
-					<li>g/tRPC</li>
-					<li>MQTT</li>
-					<li>SOAP</li>
-					<li>WebSockets</li>
+					<li class="fragment custom blur highlight-current-white fade-up">SOAP</li>
+					<li class="fragment custom blur highlight-current-white fade-up">g/tRPC</li>
+					<li class="fragment custom blur highlight-current-white fade-up">MQTT</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Webhooks</li>
+					<li class="fragment custom blur highlight-current-white fade-up">WebSockets</li>
 				</ul>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
