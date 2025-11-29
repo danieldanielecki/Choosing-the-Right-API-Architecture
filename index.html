@@ -212,6 +212,169 @@ subscription {
 				<p>GraphQL takes <strong>more time</strong> to learn.</p>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Global Object Identification</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Global Object Identification: GraphQL</h2>
+				<code class="language-graphql" data-trim data-line-numbers="|2|3-5"><pre>
+query {
+	user(id: "1") {
+		id
+		name
+		email
+	}
+}
+				</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Global Object Identification: REST</h2>
+				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
+GET /resources/:id
+				</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Pagination</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Pagination: GraphQL</h2>
+				<code class="language-graphql" data-trim data-line-numbers="|1,11|2,10|3-5|6-9"><pre>
+query {
+	items(limit: 10, offset: 20) {
+		total
+		limit
+		offset
+		items {
+			id
+			name
+		}
+	}
+}
+				</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Pagination: REST</h2>
+				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
+GET /api/items?limit=10&offset=20
+				</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Sorting</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Sorting: GraphQL</h2>
+				<code class="language-graphql" data-trim data-line-numbers="|1,6|2,5|3-4"><pre>
+query {
+	items(sort: { field: "name", order: DESC }) {
+		id
+		name
+	}
+}
+				</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Sorting: REST</h2>
+				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
+GET /api/items?sortBy=name&order=desc
+				</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>StackOverflow</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>StackOverflow</h2>
+				<p>What are Developers asking for?</p>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-stackoverflow.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-stackoverflow2.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-stackoverflow3.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Won't work</h2>
+				<code class="language-graphql" data-trim data-line-numbers="|1,3|2"><pre>
+query {
+	*
+}
+			</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Won't work</h2>
+				<code class="language-graphql" data-trim data-line-numbers="|1,5|2,4|3"><pre>
+query {
+	users {
+		*
+	}
+}
+			</code></pre>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Introspection</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-off-prod.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-voyager.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/owasp-introspection.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-security.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-demo.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-demo-disable.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-demo-disabled.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Circular Queries</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/circularqueries.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Standardization<br>vs<br>Fragmentation</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Standardization: REST</h2>
+				<p>HTTP methods (GET, POST, PUT, DELETE), status codes (200, 404, 500).</p>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h2>Fragmentation: GraphQL</h2>
+				<p>Apollo Server, GraphQL Yoga, Envelop, Express-GraphQL (deprecated), Apollo Client, Relay, urql.</p>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<h1>Projects</h1>
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/dataloader.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-voyager-outdated.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-voyager-fails.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/graphql-newsletter.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/maintainers-apollo-graphql.png">
+				<img data-src="assets/maintainers-theguild.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
 				<h1>Caching</h1>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
@@ -226,25 +389,25 @@ const app = express();
 const port = 3000;
 
 app.get('/api/resource', (req, res) => {
-		const resource = {
-				id: 1,
-				name: "Resource",
-				value: "Some data",
-				lastModified: new Date().toISOString()
-		};
+	const resource = {
+		id: 1,
+		name: "Resource",
+		value: "Some data",
+		lastModified: new Date().toISOString()
+	};
 
-		// Set Cache-Control header
-		res.setHeader('Cache-Control', 'public, max-age=3600');
-		// Set ETag header
-		const eTag = 'some-etag-value';
-		res.setHeader('ETag', eTag);
+	// Set Cache-Control header
+	res.setHeader('Cache-Control', 'public, max-age=3600');
+	// Set ETag header
+	const eTag = 'some-etag-value';
+	res.setHeader('ETag', eTag);
 
-		// Check if the client's ETag matches the server's ETag
-		if (req.headers['if-none-match'] === eTag) {
-				return res.status(304).send(); // Not Modified
-		}
+	// Check if the client's ETag matches the server's ETag
+	if (req.headers['if-none-match'] === eTag) {
+		return res.status(304).send(); // Not Modified
+	}
 
-		res.json(resource);
+	res.json(resource);
 });
 
 app.listen(port, () => {
@@ -402,297 +565,16 @@ try {
 				</ul>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Global Object Identification</h1>
+				<img data-src="assets/demo-error200.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Global Object Identification</h2>
-				<p>Let my frontend fetch a single ID.</p>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Global Object Identification: GraphQL</h2>
-				<code class="language-graphql" data-trim data-line-numbers="|2|3-5"><pre>
-query {
-	user(id: "1") {
-		id
-		name
-		email
-	}
-}
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Global Object Identification: REST</h2>
-				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
-GET /resources/:id
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Pagination</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Pagination</h2>
-				<p>Let my frontend fetch a page.</p>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Pagination: GraphQL</h2>
-				<code class="language-graphql" data-trim data-line-numbers="|1,11|2,10|3-5|6-9"><pre>
-query {
-	items(limit: 10, offset: 20) {
-		total
-		limit
-		offset
-		items {
-			id
-			name
-		}
-	}
-}
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Pagination: REST</h2>
-				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
-GET /api/items?limit=10&offset=20
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Sorting</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Sorting</h2>
-				<p>Let my frontend sort the results.</p>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Sorting: GraphQL</h2>
-				<code class="language-graphql" data-trim data-line-numbers="|1,6|2,5|3-4"><pre>
-query {
-	items(sort: { field: "name", order: DESC }) {
-		id
-		name
-	}
-}
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Sorting: REST</h2>
-				<code class="language-javascript" data-trim data-line-numbers="|1"><pre>
-GET /api/items?sortBy=name&order=desc
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>StackOverflow</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>StackOverflow</h2>
-				<p>What are Developers asking for?</p>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-stackoverflow.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-stackoverflow2.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-stackoverflow3.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Won't work</h2>
-				<code class="language-graphql" data-trim data-line-numbers="|1,3|2"><pre>
-query {
-	*
-}
-			</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Won't work</h2>
-				<code class="language-graphql" data-trim data-line-numbers="|1,5|2,4|3"><pre>
-query {
-	users {
-		*
-	}
-}
-			</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Introspection</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection-off-prod.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-voyager.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/owasp-introspection.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection-security.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Circular Queries</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Standardization<br>vs<br>Fragmentation</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Standardization: REST</h2>
-				<p>HTTP methods (GET, POST, PUT, DELETE), status codes (200, 404, 500).</p>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Fragmentation: GraphQL</h2>
-				<p>Apollo Server, GraphQL Yoga, Envelop, Express-GraphQL (deprecated), Apollo Client, Relay, urql.</p>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Projects</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/dataloader.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-voyager-outdated.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-voyager-fails.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-newsletter.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/maintainers-apollo-graphql.png">
-				<img data-src="assets/maintainers-theguild.png">
+				<img data-src="assets/demo-errormessage.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h1>Unit Testing</h1>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Unit Testing: REST</h2>
-				<code class="language-javascript" data-trim data-line-numbers="|1|2-3|5|7-9|11-15|17"><pre>
-const express = require('express');
-const app = express();
-app.use(express.json());
-
-let resources = [{ id: 1, name: 'Resource1' }];
-
-app.get('/api/resources', (req, res) => {
-	res.json(resources);
-});
-
-app.post('/api/resources', (req, res) => {
-	const newResource = { id: resources.length + 1, name: req.body.name };
-	resources.push(newResource);
-	res.status(201).json(newResource);
-});
-
-module.exports = app;
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Unit Testing: GraphQL</h2>
-				<code class="language-javascript" data-trim
-					data-line-numbers="|1|3,16|4-6|9-11|13-15|18|20,31|21-23|24-30|33|35"><pre>
-const { ApolloServer, gql } = require('apollo-server');
-
-const typeDefs = gql`
-	type Resource {
-		id: ID!
-		name: String!
-	}
-
-	type Query {
-		resources: [Resource]
-	}
-
-	type Mutation {
-		createResource(name: String!): Resource
-	}
-`;
-
-let resources = [{ id: 1, name: 'Resource1' }];
-
-const resolvers = {
-	Query: {
-		resources: () => resources,
-	},
-	Mutation: {
-		createResource: (parent, { name }) => {
-			const newResource = { id: resources.length + 1, name };
-			resources.push(newResource);
-			return newResource;
-		},
-	},
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
-module.exports = server;
-				</code></pre>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Unit Testing: REST</h2>
-				<pre><code class="language-javascript" data-trim data-line-numbers="|1|2|3|5,19|6,11|7|8|9|10|13,18|14|15|16|17">
-const request = require('supertest');
-const app = require('../app');
-const { expect } = require('chai');
-
-describe('REST API', () => {
-	it('should get all resources', async () => {
-		const res = await request(app).get('/api/resources');
-		expect(res.status).to.equal(200);
-		expect(res.body).to.be.an('array');
-		expect(res.body.length).to.equal(1);
-	});
-
-	it('should create a new resource', async () => {
-		const res = await request(app).post('/api/resources').send({ name: 'Resource2' });
-		expect(res.status).to.equal(201);
-		expect(res.body).to.have.property('id');
-		expect(res.body).to.have.property('name', 'Resource2');
-	});
-});
-				</pre></code>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h2>Unit Testing: GraphQL</h2>
-				<pre><code class="language-javascript" data-trim data-line-numbers="|1|2|3|5|7,35|8,20|9-16|17|18|19|22,34|23-30|31|32|33">
-const { createTestClient } = require('apollo-server-testing');
-const { expect } = require('chai');
-const server = require('../schema');
-
-const { query, mutate } = createTestClient(server);
-
-describe('GraphQL API', () => {
-	it('should get all resources', async () => {
-		const GET_RESOURCES = `
-			query {
-				resources {
-					id
-					name
-				}
-			}
-		`;
-		const res = await query({ query: GET_RESOURCES });
-		expect(res.data.resources).to.be.an('array');
-		expect(res.data.resources.length).to.equal(1);
-	});
-
-	it('should create a new resource', async () => {
-		const CREATE_RESOURCE = `
-			mutation($name: String!) {
-				createResource(name: $name) {
-					id
-					name
-				}
-			}
-		`;
-		const res = await mutate({ mutation: CREATE_RESOURCE, variables: { name: 'Resource2' } });
-		expect(res.data.createResource).to.have.property('id');
-		expect(res.data.createResource).to.have.property('name', 'Resource2');
-	});
-});
-				</pre></code>
+				<img data-src="assets/unittesting.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h1>Trends</h1>
