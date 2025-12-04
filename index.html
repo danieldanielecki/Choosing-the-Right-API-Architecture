@@ -43,7 +43,25 @@
 				<img data-src="assets/underfetching.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/overfetching.png">
+				<code class="language-json" data-trim data-line-numbers="|2,4,12-15"><pre>
+{
+  "id": "person_1",
+  "uri": "/production/resources/persons/person_1",
+  "name": "John",
+  "resourceType": {
+    "type": "ActorType",
+    "id": "actortype_1",
+    "uri": "/types/resources/actors/actortype_1",
+    "name": "Worker"
+  },
+  "isAdditional": false,
+  "email": "harlow@gmail.com",
+  "firstName": "John",
+  "lastName": "Harlow",
+  "phoneNumber": "+420775987632",
+  "maxOverTime": null
+}
+				</code></pre>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h1>Frontend?</h1>
@@ -55,10 +73,7 @@
 				<h1>Architects?</h1>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Business?</h1>
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<h1>Management?</h1>
+				<h1>Others?</h1>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Why GraphQL?</h2>
@@ -67,9 +82,9 @@
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Why GraphQL?</h2>
 				<ul>
-					<li class="fragment custom blur highlight-current-white fade-up">No Over-Fetching</li>
 					<li class="fragment custom blur highlight-current-white fade-up">No Under-Fetching</li>
-					<li class="fragment custom blur highlight-current-white fade-up">Non-null</li>
+					<li class="fragment custom blur highlight-current-white fade-up">No Over-Fetching</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Nullability/Non-null ("!")</li>
 					<li class="fragment custom blur highlight-current-white fade-up">Performance*</li>
 					<li class="fragment custom blur highlight-current-white fade-up">Single Endpoint</li>
 					<li class="fragment custom blur highlight-current-white fade-up">Strong Typing</li>
@@ -157,7 +172,7 @@ query {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>GraphQL Mutations</h2>
-				<code class="language-graphql" data-trim data-line-numbers="|1|5|1,5|2|3|4|7-11"><pre>
+				<code class="language-graphql" data-trim data-line-numbers="|1|5|1,5|2|3|4|7-11|2"><pre>
 type Mutation {
 	createUser(data: CreateUserInput!): User!
 	deleteUser(id: ID!): User!
@@ -334,10 +349,16 @@ query {
 				<img data-src="assets/introspection.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection-off-prod.png">
+				<img data-src="assets/introspection-demo.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-voyager.png">
+				<img data-src="assets/introspection-demo-disable.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-demo-disabled.png">
+			</section>
+			<section data-transition="zoom" data-transition-speed="slow">
+				<img data-src="assets/introspection-off-prod.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<img data-src="assets/owasp-introspection.png">
@@ -346,13 +367,7 @@ query {
 				<img data-src="assets/introspection-security.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection-demo.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection-demo-disable.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/introspection-demo-disabled.png">
+				<img data-src="assets/graphql-voyager.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h1>Circular Queries</h1>
@@ -369,7 +384,7 @@ query {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Fragmentation: GraphQL</h2>
-				<p>Apollo Server, GraphQL Yoga, Envelop, Express-GraphQL (deprecated), Apollo Client, Relay, urql.</p>
+				<p>Apollo Server, GraphQL Yoga, Envelop, Apollo Client, Relay, urql.</p>
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h1>Projects</h1>
@@ -379,9 +394,6 @@ query {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<img data-src="assets/graphql-voyager-outdated.png">
-			</section>
-			<section data-transition="zoom" data-transition-speed="slow">
-				<img data-src="assets/graphql-voyager-fails.png">
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<img data-src="assets/graphql-newsletter.png">
@@ -402,7 +414,7 @@ query {
 			</section>
 			<section data-transition="zoom" data-transition-speed="slow">
 				<h2>Caching: REST (Express.js)</h2>
-				<code class="language-javascript" data-trim data-line-numbers="|13-17"><pre>
+				<code class="language-javascript" data-trim data-line-numbers="|13-17|19-22"><pre>
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -578,8 +590,7 @@ try {
 				<h2>Errors<br>!==<br>200</h2>
 				<ul>
 					<li class="fragment custom blur highlight-current-white fade-up">Bad Request: 400</li>
-					<li class="fragment custom blur highlight-current-white fade-up">Unauthorized: 401</li>
-					<li class="fragment custom blur highlight-current-white fade-up">Forbidden: 403</li>
+					<li class="fragment custom blur highlight-current-white fade-up">Method Not Allowed: 405</li>
 					<li class="fragment custom blur highlight-current-white fade-up">Internal Server Error: 500</li>
 				</ul>
 			</section>
